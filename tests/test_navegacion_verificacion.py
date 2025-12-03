@@ -1,63 +1,32 @@
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
+from pages.login_page import LoginPage
+from pages.inventory_page import InventoryPage
 from utils.driver_setup import setup_driver
-from utils.selenium_func import esperar_visibilidad,escribir_text, click_elemento, obtener_elemento,obtener_texto
-from utils.config import BASE_URL, USUARIO_PRED, PASS_PRED, TIEMPO_DE_ESPERA
+from utils.config import BASE_URL, USUARIO_PRED, PASS_PRED
 
-#LOGIN locators
-LOC_USER = (By.ID, "user-name")
-LOC_PASS = (By.ID, "password")
-LOC_BTN_LOGIN = (By.ID, "login-button")
-LOC_ERROR_MSG = (By.CSS_SELECTOR, "h3[data-test='error']")
+#AGREGA EL PRIMER PRODUCTO Y VALIDA
 
-#PRODUCTOS locators
-LOC_PRODUCTOS = (By.CLASS_NAME,"inventory_item")
-LOC_ITEM_PRECIO= (By.CLASS_NAME,"inventory_item_price")
-LOC_ITEM_NOMBRE= (By.CLASS_NAME,"inventory_item_name")
-LOC_TITULO = (By.CLASS_NAME,"title")
-
-#Básicamente se loguea, verifica lista de productos, te muestra el primero con precio y nombre y luego de último el título
 def test_nav_ver():
     driver = setup_driver()
-    try:
-        driver.get(BASE_URL)
+    driver.get(BASE_URL)
 
-        #login con usuario ya verificado
-        escribir_text(driver, LOC_USER, USUARIO_PRED)
-        escribir_text(driver, LOC_PASS, PASS_PRED)
-        click_elemento(driver, LOC_BTN_LOGIN)
+    login = LoginPage(driver)
+    inventory = InventoryPage(driver)
 
-        esperar_visibilidad(driver, LOC_PRODUCTOS, TIEMPO_DE_ESPERA)
-        print("Login exitoso, cargó catálogo")
+    # login
+    login.login(USUARIO_PRED, PASS_PRED)
 
-        #valida titulo
-        titulo=obtener_texto(driver, LOC_TITULO)
-        if titulo!="Products":
-            print(f"Titulo incorrecto:{titulo}")
-        else:
-            print(f"Titulo de página validado: {titulo}")
-        #verifica lista de products
-        productos = obtener_elemento(driver,LOC_PRODUCTOS)
+    # valida titulo
+    titulo = inventory.obtener_titulo()
+    assert titulo == "Products", f"Título incorrecto: {titulo}"
 
-        if not productos:
-            print("Productos no encontrados")
-        
-        else:
-            print(f"Se encontraron productos {len(productos)} en el catálogo")
-            nombre_elemento=obtener_elemento(driver, LOC_ITEM_NOMBRE)[0]
-            precio_elemento=obtener_elemento(driver, LOC_ITEM_PRECIO)[0]
-            primer_nombre=nombre_elemento.text
-            primer_precio=precio_elemento.text
-            print(f"Nombre:{primer_nombre}- Precio:{primer_precio}")
+    # lista
+    productos = inventory.obtener_lista_productos()
+    assert len(productos) > 0, "No se encontraron productos en el catálogo"
 
-    except TimeoutException as e:
-        print(f"Error, algo no cargó a tiempo:{e}")
+    # obtener nombre y precio
+    primer_nombre = inventory.obtener_nombre_producto(0)
+    primer_precio = inventory.obtener_precio_producto(0)
 
-    except Exception as e:
-        print(f"Error general:{e}")
-    finally:
-        driver.quit()
-        print("Fin de prueba Navegación y Verificación del Catálogo")
+    print(f"Primer producto -> Nombre: {primer_nombre}  |  Precio: {primer_precio}")
 
-if __name__ == "__main__":
-    test_nav_ver()
+    driver.quit()
