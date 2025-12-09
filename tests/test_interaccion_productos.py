@@ -1,4 +1,3 @@
-from utils.driver_setup import setup_driver
 from utils.config import BASE_URL, USUARIO_PRED, PASS_PRED
 
 from pages.login_page import LoginPage
@@ -6,9 +5,8 @@ from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
 
 #VERIFICA CARRITO LUEGO DE AGREGAR
+def test_carrito(driver):
 
-def test_carrito():
-    driver = setup_driver()
     driver.get(BASE_URL)
 
     login = LoginPage(driver)
@@ -20,7 +18,7 @@ def test_carrito():
 
     # Inventory
     inventory.esperar_pagina()
-    producto = inventory.conseguir_primer_producto()
+    producto = inventory.conseguir_primer_producto()   # {"nombre": "...", "precio": "..."}
 
     # Agregar PRIMER producto
     inventory.agregar_primer_producto()
@@ -35,5 +33,3 @@ def test_carrito():
     # Validar nombre del producto agregado
     nombre_carrito = cart.get_first_item_name()
     assert nombre_carrito == producto["nombre"], f"Producto incorrecto en carrito: {nombre_carrito}"
-
-    driver.quit()

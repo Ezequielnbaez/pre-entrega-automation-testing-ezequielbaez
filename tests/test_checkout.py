@@ -1,4 +1,3 @@
-from utils.driver_setup import setup_driver
 from utils.config import BASE_URL, USUARIO_PRED, PASS_PRED
 
 from pages.login_page import LoginPage
@@ -7,9 +6,8 @@ from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 
 #REALIZA UN CHECKOUT CON UN PRODUCTO
+def test_checkout_completo(driver):
 
-def test_checkout_completo():
-    driver = setup_driver()
     driver.get(BASE_URL)
 
     login = LoginPage(driver)
@@ -38,5 +36,3 @@ def test_checkout_completo():
     # Validar mensaje final
     assert checkout.obtener_mensaje_final() == "Thank you for your order!", \
         "El mensaje final no coincide"
-
-    driver.quit()

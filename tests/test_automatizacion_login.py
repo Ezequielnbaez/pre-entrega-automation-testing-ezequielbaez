@@ -1,4 +1,3 @@
-from utils.driver_setup import setup_driver
 from utils.config import BASE_URL, TIEMPO_DE_ESPERA
 from utils.data_utils import leer_usaurios
 
@@ -7,39 +6,33 @@ from pages.inventory_page import InventoryPage
 from selenium.common.exceptions import TimeoutException
 
 #LOGIN A PARTIR DE DATOS EN CARPETA "datos" en JSON
+def test_login_multiple(driver):
 
-def test_login_multiple():
-    driver = setup_driver()
     login = LoginPage(driver)
     inventory = InventoryPage(driver)
 
     usuarios = leer_usaurios()
 
-    try:
-        driver.get(BASE_URL)
+    driver.get(BASE_URL)
 
-        for usuario in usuarios:
+    for usuario in usuarios:
 
-            login.limpiar_campos()
+        login.limpiar_campos()
 
-            # intentar login
-            login.login(usuario["usuario"], usuario["password"])
+        # intentar login
+        login.login(usuario["usuario"], usuario["password"])
 
-            try:
-                inventory.esperar_catalogo(TIEMPO_DE_ESPERA)
-                print(f"✔ Usuario '{usuario['usuario']}' logró entrar")
+        try:
+            inventory.esperar_catalogo(TIEMPO_DE_ESPERA)
+            print(f"✔ Usuario '{usuario['usuario']}' logró entrar")
 
-                # volver al inicio para siguiente usuario
-                driver.get(BASE_URL)
+            # volver al inicio para siguiente usuario
+            driver.get(BASE_URL)
 
-            except TimeoutException:
-                # fallo login
-                error = login.obtener_error()
-                if error:
-                    print(f"Usuario '{usuario['usuario']}' falló login: {error}")
-                else:
-                    print(f" Usuario '{usuario['usuario']}' falló login (sin mensaje detectable)")
-
-    finally:
-        driver.quit()
-        print("🔚 Fin de prueba login múltiple")
+        except TimeoutException:
+            # fallo de login
+            error = login.obtener_error()
+            if error:
+                print(f"❌ Usuario '{usuario['usuario']}' falló login: {error}")
+            else:
+                print(f"❌ Usuario '{usuario['usuario']}' falló login (sin mensaje detectable)")
