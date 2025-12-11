@@ -6,6 +6,9 @@ from utils.driver_setup import setup_driver
 
 CARPETA_SCREENSHOTS = "screenshots"
 
+@pytest.fixture
+def base_url():
+    return "https://jsonplaceholder.typicode.com"
 
 @pytest.fixture
 def driver():
