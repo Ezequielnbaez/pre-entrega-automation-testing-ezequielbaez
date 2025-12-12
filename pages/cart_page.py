@@ -1,5 +1,6 @@
 from utils.selenium_func import click_elemento,esperar_visibilidad
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 #DECIDÍ MANTENER EL USO DE LAS FUNCIONES DE UTILS SIGUIENDO EL POM, PARA REUTILIZAR CÓDIGO
 
 class CartPage:
@@ -9,13 +10,14 @@ class CartPage:
     LOC_CART_ITEMS = ("class name", "cart_item")
     LOC_TITULO = ("class name", "title")
     LOC_ITEM_NAME = ("class name", "inventory_item_name")
-
+    LOC_REMOVE_MOCHILA = ("id", "remove-sauce-labs-backpack")
 
     def __init__(self, driver):
         self.driver = driver
 
     def remover_mochila(self):
-        click_elemento(self.driver, self.LOC_REMOVE_BTN)
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.LOC_REMOVE_MOCHILA)).click()
+
 
     def continuar_comprando(self):
         click_elemento(self.driver, self.LOC_CONTINUE_SHOPPING)

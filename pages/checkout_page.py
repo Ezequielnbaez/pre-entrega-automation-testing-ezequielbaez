@@ -1,4 +1,6 @@
 from utils.selenium_func import escribir_text, click_elemento, esperar_visibilidad
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 #from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
 #DECIDÍ MANTENER EL USO DE LAS FUNCIONES DE UTILS SIGUIENDO EL POM, PARA REUTILIZAR CÓDIGO
@@ -17,6 +19,8 @@ class CheckoutPage:
         self.driver = driver
 
     def completar_formulario(self, nombre, apellido, codigo):
+        #espero porque github tiene computadora lenta parece
+        WebDriverWait(self.driver, 10).until(EC.url_contains("checkout-step-one.html"))
         escribir_text(self.driver, self.LOC_FIRSTNAME, nombre)
         escribir_text(self.driver, self.LOC_LASTNAME, apellido)
         escribir_text(self.driver, self.LOC_ZIPCODE, codigo)
