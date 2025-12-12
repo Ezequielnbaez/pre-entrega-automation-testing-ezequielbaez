@@ -14,3 +14,62 @@
 2025-12-12 11:30:09,787 - INFO - Usuario 'standard_user' logro entrar correctamente
 2025-12-12 11:30:09,787 - INFO - Volviendo a la página principal para probar siguiente usuario
 2025-12-12 11:30:09,928 - INFO - Intentando login con usuario: fake_user2
+2025-12-12 12:19:53,612 - INFO - Iniciando test_api_get_posts
+2025-12-12 12:19:54,001 - INFO - Primer post recibido: {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+2025-12-12 12:19:54,003 - INFO - Iniciando test_api_post_crear_post
+2025-12-12 12:19:54,469 - INFO - Post creado correctamente: {'title': 'Prueba Automática', 'body': 'Contenido generado con pytest', 'userId': 1, 'id': 101}
+2025-12-12 12:19:54,471 - INFO - Iniciando test_api_delete_post
+2025-12-12 12:19:54,930 - INFO - Delete ejecutado correctamente
+2025-12-12 12:19:54,933 - INFO - Iniciando flujo encadenado
+2025-12-12 12:19:55,397 - INFO - Recurso creado: {'title': 'Flow test', 'body': 'pytest chaining test', 'userId': 99, 'id': 101}
+2025-12-12 12:19:55,768 - INFO - El recurso no existe realmente (comportamiento esperado en JSONPlaceholder)
+2025-12-12 12:19:56,265 - INFO - Flujo completo ejecutado exitosamente
+2025-12-12 12:19:57,359 - INFO - Iniciando test_login_multiple
+2025-12-12 12:19:57,906 - INFO - Abrí la URL: https://www.saucedemo.com/
+2025-12-12 12:19:57,976 - INFO - Intentando login con usuario: standard_user
+2025-12-12 12:19:58,293 - INFO - Usuario 'standard_user' logro entrar correctamente
+2025-12-12 12:19:58,294 - INFO - Volviendo a la página principal para probar siguiente usuario
+2025-12-12 12:19:58,392 - INFO - Intentando login con usuario: fake_user2
+2025-12-12 12:20:08,850 - INFO - Intentando login con usuario: locked_out_user
+2025-12-12 12:20:19,242 - INFO - Intentando login con usuario: problem_user
+2025-12-12 12:20:29,614 - INFO - Intentando login con usuario: fake_user1
+2025-12-12 12:20:39,990 - INFO - Intentando login con usuario: fake_user3
+2025-12-12 12:20:53,499 - INFO - Iniciando test_checkout_completo
+2025-12-12 12:20:53,821 - INFO - Abrí la URL: https://www.saucedemo.com/
+2025-12-12 12:20:53,821 - INFO - Realizando login con usuario predeterminado: standard_user
+2025-12-12 12:20:54,125 - INFO - Agregando mochila al carrito
+2025-12-12 12:20:54,172 - INFO - Ingresando al carrito
+2025-12-12 12:20:54,219 - INFO - Iniciando proceso de checkout
+2025-12-12 12:20:54,269 - INFO - Completando formulario del checkout
+2025-12-12 12:20:54,478 - INFO - Finalizando compra
+2025-12-12 12:20:54,544 - INFO - Mensaje final obtenido: Thank you for your order!
+2025-12-12 12:20:54,558 - INFO - ✔ Test checkout completado exitosamente
+2025-12-12 12:20:57,723 - INFO - Iniciando test_carrit
+2025-12-12 12:20:58,149 - INFO - Abrí la URL: https://www.saucedemo.com/
+2025-12-12 12:20:58,149 - INFO - Realizando login con usuario predeterminado: standard_user
+2025-12-12 12:20:58,447 - INFO - Esperando que cargue la página de inventario
+2025-12-12 12:20:58,460 - INFO - Obteniendo información del primer producto
+2025-12-12 12:20:58,502 - INFO - Agregando el primer producto al carrito
+2025-12-12 12:20:58,556 - INFO - Contador del carrito: 1
+2025-12-12 12:20:58,563 - INFO - Ir al carrito
+2025-12-12 12:20:58,640 - INFO - Producto encontrado en el carrito: Sauce Labs Backpack
+2025-12-12 12:20:58,658 - INFO - Test_carrito completado correctamente
+2025-12-12 12:21:01,829 - INFO - Iniciando test_nav_ver
+2025-12-12 12:21:02,180 - INFO - Abrí la URL: https://www.saucedemo.com/
+2025-12-12 12:21:02,180 - INFO - Realizando login con usuario predeterminado: standard_user
+2025-12-12 12:21:02,510 - INFO - Validando el título de la página de inventario
+2025-12-12 12:21:02,529 - INFO - Obteniendo lista de productos del inventario
+2025-12-12 12:21:02,544 - INFO - Obteniendo nombre y precio del primer producto
+2025-12-12 12:21:02,583 - INFO - Primer producto -> Nombre: Sauce Labs Backpack  |  Precio: $29.99
+2025-12-12 12:21:02,583 - INFO - Test test_nav_ver finalizado con éxito
+2025-12-12 12:21:05,763 - INFO - Iniciando test_remover_seguir_comprando
+2025-12-12 12:21:06,215 - INFO - Abrí la URL: https://www.saucedemo.com/
+2025-12-12 12:21:06,215 - INFO - Realizando login con usuario predeterminado: standard_user
+2025-12-12 12:21:06,522 - INFO - Agregando la mochila al carrito
+2025-12-12 12:21:06,569 - INFO - Abriendo carrito
+2025-12-12 12:21:06,624 - INFO - Items en carrito: 1
+2025-12-12 12:21:06,627 - INFO - Removiendo mochila del carrito
+2025-12-12 12:21:06,673 - INFO - Items tras remover: 0
+2025-12-12 12:21:06,676 - INFO - Haciendo clic en 'Continue Shopping'
+2025-12-12 12:21:06,743 - INFO - Título actual de la página: Products
+2025-12-12 12:21:06,752 - INFO - Test test_remover_seguir_comprando finalizado con éxito
