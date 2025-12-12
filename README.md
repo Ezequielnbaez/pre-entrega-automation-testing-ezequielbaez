@@ -33,33 +33,30 @@ Por último los reportes se guardan en carpeta reports.
 ## 3. Estructura
 TP_AUTOMATIZACION/
 │
-├── datos/                          # Archivos de datos usados por los tests
+├── datos/                      # Archivos de datos usados por los tests
 │   └── usuarios.json
 │
-├── drivers/                        # Drivers de navegador
+├── drivers/                    # Drivers del navegador (NO SE USA si usás webdriver-manager)
 │   ├── chromedriver.exe
 │   ├── LICENSE.chromedriver
 │   └── THIRD_PARTY_NOTICES.chromedriver
 │
-├── logs/                           # Logs generados por pytest (pytest.ini + logger.py)
+├── logs/                       # Logs generados por pytest (logger.py + pytest.ini)
 │   └── (se generan automáticamente)
 │
-├── pages/                          # Page Objects (POM)
-│   ├── __pycache__/
+├── pages/                      # Page Objects (POM)
 │   ├── cart_page.py
 │   ├── checkout_page.py
 │   ├── inventory_page.py
 │   └── login_page.py
 │
-├── reports/                        # Reportes HTML generados por pytest-html
+├── reports/                    # Reportes HTML generados por pytest-html
 │   └── (pytests-report.html, etc.)
 │
-├── screenshots/                    # Capturas automáticas al fallar un test
+├── screenshots/                # Capturas tomadas automáticamente al fallar un test
 │   └── (se generan automáticamente con timestamp)
 │
-├── tests/                          # Casos de prueba
-│   ├── __pycache__/
-│   ├── __init__.py
+├── tests/                      # Casos de prueba automatizados
 │   ├── test_api.py
 │   ├── test_automatizacion_login.py
 │   ├── test_checkout.py
@@ -68,20 +65,19 @@ TP_AUTOMATIZACION/
 │   ├── test_remover_producto.py
 │   └── test_selenium.py
 │
-├── utils/                          # Funciones auxiliares reutilizables
-│   ├── __pycache__/
-│   ├── __init__.py
-│   ├── config.py                   # Configuraciones del proyecto
-│   ├── data_utils.py               # Lectura y parsing de datos
-│   ├── driver_setup.py             # Setup del WebDriver
-│   ├── logger.py                   # Configuración centralizada de logs
-│   └── selenium_func.py            # Funciones comunes de Selenium
+├── utils/                      # Funciones auxiliares reutilizables
+│   ├── config.py              # Configuraciones del proyecto
+│   ├── data_utils.py          # Lectura y parsing de datos
+│   ├── driver_setup.py        # Setup del WebDriver
+│   ├── logger.py              # Configuración centralizada de logs
+│   └── selenium_func.py       # Funciones comunes de Selenium
 │
-├── venv/                           # Entorno virtual (no se sube a git)
+├── venv/                       # Entorno virtual (IGNORADO por Git)
 │
-├── conftest.py                     # Fixtures globales (driver, reportes, screenshots)
-├── README.md                       # Documentación del proyecto
-└── requirements.txt                # Dependencias del proyecto
+├── conftest.py                 # Fixtures globales (webdriver, reportes, screenshots)
+│
+├── README.md                   # Documentación del proyecto
+└── requirements.txt            # Dependencias del proyecto
 
 
 ## 4. Instalación de Dependencias
