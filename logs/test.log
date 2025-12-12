@@ -1,0 +1,16 @@
+2025-12-12 11:30:03,595 - INFO - Iniciando test_api_get_posts
+2025-12-12 11:30:04,159 - INFO - Primer post recibido: {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+2025-12-12 11:30:04,163 - INFO - Iniciando test_api_post_crear_post
+2025-12-12 11:30:04,724 - INFO - Post creado correctamente: {'title': 'Prueba Automática', 'body': 'Contenido generado con pytest', 'userId': 1, 'id': 101}
+2025-12-12 11:30:04,727 - INFO - Iniciando test_api_delete_post
+2025-12-12 11:30:05,274 - INFO - Delete ejecutado correctamente
+2025-12-12 11:30:05,289 - INFO - Iniciando flujo encadenado
+2025-12-12 11:30:05,853 - INFO - Recurso creado: {'title': 'Flow test', 'body': 'pytest chaining test', 'userId': 99, 'id': 101}
+2025-12-12 11:30:06,640 - INFO - El recurso no existe realmente (comportamiento esperado en JSONPlaceholder)
+2025-12-12 11:30:07,197 - INFO - Flujo completo ejecutado exitosamente
+2025-12-12 11:30:08,795 - INFO - Iniciando test_login_multiple
+2025-12-12 11:30:09,333 - INFO - Abrí la URL: https://www.saucedemo.com/
+2025-12-12 11:30:09,465 - INFO - Intentando login con usuario: standard_user
+2025-12-12 11:30:09,787 - INFO - Usuario 'standard_user' logro entrar correctamente
+2025-12-12 11:30:09,787 - INFO - Volviendo a la página principal para probar siguiente usuario
+2025-12-12 11:30:09,928 - INFO - Intentando login con usuario: fake_user2
