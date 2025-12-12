@@ -6,12 +6,13 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class CartPage:
     LOC_REMOVE_BTN = ("id", "remove-sauce-labs-backpack")
-    LOC_CONTINUE_SHOPPING = ("id", "continue-shopping")
     LOC_CHECKOUT_BTN = ("id", "checkout")
     LOC_CART_ITEMS = (By.CSS_SELECTOR, ".cart_item")
+    LOC_CONTADOR_ITEMS = (By.CSS_SELECTOR, ".cart_item")
+    LOC_REMOVE_MOCHILA = (By.ID, "remove-sauce-labs-backpack")
+    LOC_CONTINUE_SHOPPING = (By.ID, "continue-shopping")
     LOC_TITULO = ("class name", "title")
     LOC_ITEM_NAME = ("class name", "inventory_item_name")
-    LOC_REMOVE_MOCHILA = ("id", "remove-sauce-labs-backpack")
 
     def __init__(self, driver):
         self.driver = driver
@@ -28,8 +29,8 @@ class CartPage:
         click_elemento(self.driver, self.LOC_CHECKOUT_BTN)
 
     def cantidad_items(self):
-        items = self.driver.find_elements(*self.LOC_CART_ITEMS)
-        return len(items)
+        return len(self.driver.find_elements(*self.LOC_CONTADOR_ITEMS))
+
     
     def esperar(self):
         esperar_visibilidad(self.driver, self.LOC_TITULO)

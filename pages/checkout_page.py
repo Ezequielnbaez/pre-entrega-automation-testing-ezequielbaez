@@ -20,14 +20,11 @@ class CheckoutPage:
 
     def completar_formulario(self, nombre, apellido, codigo):
         #espero porque github tiene computadora lenta parece
-        
         WebDriverWait(self.driver, 10).until(EC.url_contains("checkout-step-one.html"))
-        
         escribir_text(self.driver, self.LOC_FIRSTNAME, nombre)
         escribir_text(self.driver, self.LOC_LASTNAME, apellido)
         escribir_text(self.driver, self.LOC_ZIPCODE, codigo)
         click_elemento(self.driver, self.LOC_CONTINUE_BTN)
-       
         WebDriverWait(self.driver, 10).until(EC.url_contains("checkout-step-two.html"))
 
     def finalizar_compra(self):
