@@ -41,7 +41,7 @@ def pytest_runtest_makereport(item, call):
         driver.save_screenshot(ruta)
 
         # screenshoot en html
-        if "pytest_html" in item.config.pluginmanager.plugins:
+        if item.config.pluginmanager.hasplugin("html"):
             extra = getattr(rep, "extra", [])
             extra.append(pytest_html.extras.png(ruta))
             rep.extra = extra
